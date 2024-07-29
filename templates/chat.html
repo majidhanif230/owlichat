@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat - SleepJourney</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="header">
+            <div class="left-icons">
+                <img src="{{ url_for('static', filename='plus.png') }}" alt="Speaker">
+            </div>
+            <div class="center-logo">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+            </div>
+            <div class="right-icons">
+                <img src="{{ url_for('static', filename='mike.png') }}" alt="Mike" id="mode-icon" onclick="startRecording()">
+            </div>
+        </div>
+
+        <div id="chat-box">
+            <!-- Messages will be appended here -->
+        </div>
+
+        <div class="input-container">  
+                <button class="back-button" onclick="window.history.back()">&#8592;</button>
+            <input type="text" id="user-input" placeholder="Type your message..." onkeypress="handleKeyPress(event)">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        let mediaRecorder;
+        let audioChunks = [];
+
+        async function startRecording() {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            mediaRecorder = new MediaRecorder(stream);
+            mediaRecorder.start();
+
+            mediaRecorder.addEventListener('dataavailable', event => {
+                audioChunks.push(event.data);
+            });
+
+            mediaRecorder.addEventListener('stop', async () => {
+                const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                audioChunks = [];
+
+                const formData = new FormData();
+                formData.append('audio', audioBlob);
+
+                const response = await fetch('/voice_to_text', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+                document.getElementById('user-input').value = data.text;
+                sendMessage();
+            });
+
+            setTimeout(() => {
+                mediaRecorder.stop();
+            }, 5000); // Record for 5 seconds
+        }
+
+        async function sendMessage() {
+            const userInput = document.getElementById('user-input').value.trim();
+
+            if (userInput === '') {
+                return;
+            }
+
+            const response = await fetch('/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ user_input: userInput })
+            });
+
+            const data = await response.json();
+            const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+            document.getElementById('chat-box').innerHTML += `
+                <div class="message user-message">
+                    <span>${userInput}</span>
+                    <div class="timestamp">${time}</div>
+                </div>
+            `;
+
+            document.getElementById('chat-box').innerHTML += `
+                <div class="message ai-message">
+                    <span>${data.message}</span>
+                    <div class="timestamp">${time}</div>
+                </div>
+            `;
+
+            const chatBox = document.getElementById('chat-box');
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            document.getElementById('user-input').value = '';
+
+            // Convert AI response to voice
+            const ttsResponse = await fetch('/text_to_voice', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ text: data.message })
+            });
+
+            const ttsData = await ttsResponse.blob();
+            const audioURL = URL.createObjectURL(ttsData);
+            const audio = new Audio(audioURL);
+            audio.play();
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+    </script>
+</body>
+</html>

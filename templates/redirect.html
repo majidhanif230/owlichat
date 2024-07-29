@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SleepJourney</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='redirect.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="anotherpage-container">
+        <img src="{{ url_for('static', filename='mainscreen.jpg') }}" alt="Main Screen" class="anotherpage-image">
+        <div class="icon-buttons">
+            <button class="icon-button" onclick="redirectToPage('{{ url_for('profile') }}')">My Profile</button>
+            <button class="icon-button" onclick="redirectToPage('{{ url_for('bed_ready') }}')">Bed Ready</button>
+            <button class="icon-button" onclick="redirectToPage('{{ url_for('slumber_party') }}')">Slumber Party</button>
+            <button class="icon-button" onclick="redirectToPage('{{ url_for('my_sounds') }}')">My Sounds</button>
+            <button class="icon-button" onclick="redirectToPage('{{ url_for('quests') }}')">Quests</button>
+            <button class="icon-button" onclick="redirectToPage('{{ url_for('my_wellness') }}')">My Wellness</button>
+            <button class="icon-button" onclick="redirectToPage('{{ url_for('my_night') }}')">My Night</button>
+            <button class="icon-button" onclick="redirectToPage('{{ url_for('breath_rest') }}')">Breath Rest</button>
+            <button class="icon-button" onclick="redirectToPage('{{ url_for('product_for_me') }}')">Product For Me</button>
+        
+    
+        <button class="help-button" onclick="redirectToChat()"> <img src="{{ url_for('static', filename='logo.png') }}" alt="An" class="anotherpage-image"></button>
+       
+        <button class="night-button" onclick="redirectToPage('{{ url_for('good_night') }}')">Good Night</button>
+    
+    </div>
+
+    < <script>
+        function redirectToPage(page) {
+            window.location.href = page;
+        }
+
+        function redirectToChat() {
+            window.location.href = "{{ url_for('chat_page') }}";
+        }
+    </script>
+
+</body>
+</html>

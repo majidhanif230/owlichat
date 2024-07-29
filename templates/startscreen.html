@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SleepJourney</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='2ndscreen.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="welcome-container">
+        <img src="{{ url_for('static', filename='3rdscreen.png') }}" alt="Welcome" class="welcome-image">
+        <div class="welcome-text">
+            <button class="start-button" onclick="start()">Start</button>
+        </div>
+    </div>
+
+    <script>
+        function start() {
+            window.location.href = "{{ url_for('main_screen') }}"; // Redirect to another page
+        }
+    </script>
+</body>
+</html>

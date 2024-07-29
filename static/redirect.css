@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+.anotherpage-container {
+    position: relative;
+    width: 450px;
+    height: 98%;
+}
+
+.anotherpage-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.icon-buttons {
+    position: absolute;
+    top: 28%;
+    width: 50%;
+    height: 72%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 60px;
+}
+
+.icon-button {
+    background-color:transparent; /* Make background transparent to show icon underneath */
+    border: none;
+    margin-left: 34%;
+    color: transparent; /* Make text transparent */
+    width: 90px; /* Adjust width as needed */
+    height: 87px; /* Adjust height as needed */
+    cursor: pointer;
+    font-family: 'Comic Neue', cursive;
+    position: relative;
+    border-radius: 80px; /* Rounded corners */
+}
+
+.icon-button::before {
+    content: attr(data-label);
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color:transparent;
+    font-size: 16px;
+    
+}
+.help-button {
+    top: 0;
+    position: absolute;
+    width: 80px;
+    margin-top: -95%;
+    margin-right: -99%;
+    padding: 10px 10px 10px;
+    font-size: 5px; /* Font size */
+
+    border: none; /* Remove default border */
+    border-radius: 24px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-family: 'Comic Neue', cursive; /* Button font */
+    border-radius: 24px;
+}
+.back-button {
+    position: absolute;
+    padding: 5px 20px; /* Button padding */
+    font-size: 20px; /* Font size */
+    background-color: #007BFF; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-family: 'Comic Neue', cursive; /* Button font */
+    border-radius: 24px;
+}
+.help-button {
+    top: 2%; /* Position button near the top */
+    right: 0%; /* Fixed position from the right edge */
+}
+
+
+.back-button {
+    bottom: 0%; /* Position button at the bottom */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-55%); /* Center horizontally */
+}
+.night-button {
+    position: absolute;
+    padding: 5px 50px; /* Adjusted padding */
+    font-size: 22px; /* Adjusted font size */
+    background-color: transparent;
+    color:transparent;
+    border: none; /* Remove default border */
+    border-radius: 24px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-family: 'Comic Neue', cursive; /* Button font */
+    bottom: 10px; /* Position button at the bottom with some margin */
+    left: 70%; /* Center horizontally */
+    transform: translateX(-10%); /* Center horizontally */
+
+
+.night-button:hover {
+   color: transparent;
+}

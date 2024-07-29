@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SleepJourney</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='2nd_style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="homepage-container">
+        <img src="{{ url_for('static', filename='firstscreen.png') }}" alt="Homepage Image" class="homepage-image">
+        <div class="welcome-text">
+            <button class="start-button" onclick="start()">Start</button>
+        </div>
+    </div>
+
+    <script>
+        function start() {
+            window.location.href = "{{ url_for('welcome') }}"; // Redirect to another page
+        }
+    </script>
+</body>
+</html>

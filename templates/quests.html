@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SleepJourney</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='quest.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="anotherpage-container">
+        <img src="{{ url_for('static', filename='quests.png') }}" alt="Main Screen" class="anotherpage-image">
+        <div class="icon-buttons">
+            <button class="icon-button" onclick="redirectToPage('{{ url_for('carejourney', chapter='1.0') }}')">Your Care Journey</button>
+            <button class="icon-button" onclick="redirectToPage('{{ url_for('osariskscreening', chapter='2.0') }}')">Osa Risk Screening</button>
+            <button class="icon-button" onclick="redirectToPage('{{ url_for('highosarisk', chapter='10.0') }}')">High Osa Risk</button>
+            <button class="icon-button" onclick="redirectToPage('{{ url_for('bookstudy', chapter='5.0') }}')">Book Sleep Study</button>
+            <button class="icon-button" onclick="redirectToPage('{{ url_for('studyresult', chapter='3.0') }}')">Study Result</button>
+            <button class="icon-button" onclick="redirectToPage('{{ url_for('doctor', chapter='7.0') }}')">Doctor Follow-Up</button>
+            <button class="icon-button" onclick="redirectToPage('{{ url_for('cpap', chapter='6.0') }}')">Cpap Therapy</button>
+            <button class="icon-button" onclick="redirectToPage('{{ url_for('smeprovider', chapter='9.0') }}')">Dme Therapy</button>
+            <button class="icon-button" onclick="redirectToPage('{{ url_for('annual', chapter='8.0') }}')">Annual Support</button>
+            <button class="night-button" onclick="redirectToPage('{{ url_for('conclusion', chapter='4.0') }}')">Conclusions</button>
+        </div>
+        <button class="help-button" onclick="redirectToChat()"> 
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Help" style="width: 100%; height: 100%;">
+        </button>
+        <button class="start-button" onclick="window.history.back()">Back</button>
+    </div>
+
+    <script>
+        function redirectToPage(page) {
+            window.location.href = page;
+        }
+        function redirectToChat() {
+            window.location.href = "{{ url_for('chat_page') }}?prompt={{ request.args.get('prompt', 'Default prompt text') }}";
+        }
+    </script>
+</body>
+</html>

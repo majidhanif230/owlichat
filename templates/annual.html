@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annual</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='journey.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="welcome-container">
+        <img src="{{ url_for('static', filename='last.png') }}" alt="Welcome" class="welcome-image">
+        {% for item in data %}
+            <div class="data-item">
+                <h2 class="title">{{ item['Title'] }}</h2>
+                <div class="content-scroll">
+                    <h3>Content Part 1</h2>
+                    <p class="content-part1">{{ item['Content Part 1'] }}</p>
+                    <h3>Content Part 2</h2>
+                    <p class="content-part2">{{ item['Content Part 2'] }}</p>
+                </div>
+            </div>
+        {% endfor %}
+        <button class="help-button" onclick="redirectToChat()">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Help" style="width: 100%; height: 100%;">
+        </button>
+        <button class="start-button" onclick="window.history.back()">&#8592;</button>
+    </div>
+
+    <script>
+        function redirectToChat() {
+            window.location.href = "{{ url_for('chat_page') }}?prompt={{ request.args.get('prompt', 'Default prompt text') }}";
+        }
+    </script>
+</body>
+</html>

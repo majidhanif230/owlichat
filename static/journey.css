@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+.welcome-container {
+    position: relative;
+    width: 450px;
+    height: 750px; /* Adjust as needed */
+}
+
+.welcome-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.title {
+    position: absolute;
+    top: 170px; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    max-height: 50px; /* Set the max height for the title */
+    overflow-y: auto; /* Enable vertical scrolling */
+    text-align: center;
+    color: #fff; /* Adjust color as needed */
+    font-size: 20px; /* Adjust size as needed */
+    font-family: 'Comic Neue', cursive;
+
+}
+
+.content-scroll {
+    position: absolute;
+    top: 270px; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 60%; /* Adjust as needed */
+    overflow-y: auto;
+    text-align: center;
+    color: #fff; /* Adjust color as needed */
+    font-family: 'Comic Neue', cursive;
+}
+
+.content-part1, .content-part2 {
+    margin: 10px 0; /* Adjust spacing as needed */
+}
+
+.start-button {
+    position: absolute;
+    top: 2%; /* Adjust as needed to position vertically */
+    right: 75%; /* Adjust as needed to position horizontally */
+    background-color: transparent; /* Blue */
+    color: transparent;
+    font-size: 12px; /* Font size */
+    height: 40px;
+    width: 60px;
+    border: none; /* Remove default border */
+    border-radius: 20%; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-family: 'Comic Neue', cursive; /* Button font */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.help-button {
+    position: absolute;
+    top: 10px; /* Adjust as needed to position vertically */
+    right: 30px; /* Adjust as needed to position horizontally */
+    background-color: #07b3ed; /* Blue */
+    color: white;
+    font-size: 12px; /* Font size */
+    height: 60px;
+    width: 60px;
+    border: none; /* Remove default border */
+    border-radius: 50%; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-family: 'Comic Neue', cursive; /* Button font */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

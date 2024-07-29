@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SleepJourney</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='result.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="thirdpage-container">
+        <img src="{{ url_for('static', filename='result.png') }}" alt="Third Page Image" class="thirdpage-image">
+        <div class="sample-text">
+           {{ text }}
+        </div>
+        <button class="help-button" onclick="redirectToChat()">Help</button>
+        <button class="back-button" onclick="window.history.back()">Back</button>
+    </div>
+
+    <script>
+        function redirectToChat() {
+            window.location.href = "{{ url_for('chat_page') }}";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 98%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+.welcome-container {
+    position: relative;
+    width: 450px;
+    height: 98%;
+}
+
+.welcome-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.welcome-text {
+    position: absolute;
+    bottom: 0%; /* Adjust as needed to position text vertically */
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.start-button {
+    background-color: #07b3ed; /* Blue */
+    border: none;
+    color: white;
+    padding: 15px 135px 10px 135px;
+    margin-right: 1%;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 22px;
+    cursor: pointer;
+    border-radius: 28px;
+    font-family: 'Comic Neue', cursive; /* New font style */
+}
+
+.help-button {
+    position: absolute;
+    top: 10px; /* Adjust as needed to position vertically */
+    right: 15px; /* Adjust as needed to position horizontally */
+    background-color: #07b3ed; /* Blue */
+    color: white;
+    font-size: 12px; /* Font size */
+    height: 60px;
+    width: 60px;
+    border: none; /* Remove default border */
+    border-radius: 50%; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-family: 'Comic Neue', cursive; /* Button font */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,8 @@
+Flask
+vertexai
+pandas
+openpyxl
+google-cloud-bigquery
+google-cloud-texttospeech
+google-cloud-speech
+db-dtypes
